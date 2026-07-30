@@ -62,57 +62,26 @@ document.addEventListener('keydown', (event) => {
 });
 
 
-const translations = {
-  en: {
-    label: 'EN',
-    lines: ['ART AS', 'WORSHIP'],
-    documentLanguage: 'en'
-  },
-  es: {
-    label: 'ES',
-    lines: ['ARTE COMO', 'ADORACIÓN A DIOS'],
-    documentLanguage: 'es'
-  },
-  uk: {
-    label: 'UA',
-    lines: ['МИСТЕЦТВО ЯК', 'ПРОСЛАВА БОГА'],
-    documentLanguage: 'uk'
-  }
-};
 
+// Тимчасовий перемикач мов: інтерфейс уже готовий для EN / ES / UA,
+// але до додавання перекладів вміст сторінки залишається українською.
 const languageButtons = [...document.querySelectorAll('[data-language]')];
-const tagline = document.querySelector('[data-tagline]');
 
-function setLanguage(language) {
-  const selected = translations[language] || translations.en;
-
-  tagline.replaceChildren(
-    ...selected.lines.map((line) => {
-      const span = document.createElement('span');
-      span.textContent = line;
-      return span;
-    })
-  );
-
-  document.documentElement.lang = selected.documentLanguage;
-  localStorage.setItem('artworkship-language', language);
-
+function selectInterfaceLanguage(language) {
   languageButtons.forEach((button) => {
     const active = button.dataset.language === language;
     button.classList.toggle('is-active', active);
     button.setAttribute('aria-current', active ? 'true' : 'false');
   });
+
+  localStorage.setItem('artworkship-language', language);
+  document.documentElement.lang = 'uk';
 }
 
 languageButtons.forEach((button) => {
-  button.addEventListener('click', () => setLanguage(button.dataset.language));
+  button.addEventListener('click', () => {
+    selectInterfaceLanguage(button.dataset.language);
+  });
 });
 
-const savedLanguage = localStorage.getItem('artworkship-language');
-const browserLanguage = navigator.language.toLowerCase();
-const initialLanguage =
-  savedLanguage ||
-  (browserLanguage.startsWith('es') ? 'es' :
-   browserLanguage.startsWith('uk') ? 'uk' : 'en');
-
-setLanguage(initialLanguage);
+selectInterfaceLanguage(localStorage.getItem('artworkship-language') || 'uk');
