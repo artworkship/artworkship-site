@@ -64,9 +64,7 @@ document.addEventListener('keydown', (event) => {
 
 const translations = {
   en: {
-    label: 'EN',
-    lines: ['ART AS', 'WORSHIP'],
-    documentLanguage: 'en',
+    lines: ['ART AS', 'WORSHIP'], documentLanguage: 'en',
     storyTitle: 'WHY IS THE ARTIST ANONYMOUS?',
     storyParagraphs: [
       'These paintings do not begin with an image.',
@@ -76,16 +74,12 @@ const translations = {
       'Therefore, the name of the author remains hidden.',
       'Because what matters is not the hand that holds the brush, but the One who guides it.'
     ],
-    storyButton: 'READ THE FULL STORY',
-    fragmentLead: 'It all began with this fragment.',
+    storyButton: 'READ THE FULL STORY', fragmentLead: 'It all began with this fragment.',
     fragmentCaption: 'Fragment of painting 25002 — “The Garden of Gethsemane”',
-    fragmentAlt: 'Fragment of painting 25002 — The Garden of Gethsemane',
-    gallery: 'GALLERY'
+    fragmentAlt: 'Fragment of painting 25002 — The Garden of Gethsemane', gallery: 'GALLERY'
   },
   es: {
-    label: 'ES',
-    lines: ['ARTE COMO', 'ADORACIÓN A DIOS'],
-    documentLanguage: 'es',
+    lines: ['ARTE COMO', 'ADORACIÓN A DIOS'], documentLanguage: 'es',
     storyTitle: '¿POR QUÉ EL ARTISTA ES ANÓNIMO?',
     storyParagraphs: [
       'Estas pinturas no comienzan con una imagen.',
@@ -95,16 +89,12 @@ const translations = {
       'Por eso, el nombre del autor permanece oculto.',
       'Porque lo importante no es la mano que sostiene el pincel, sino Aquel que la guía.'
     ],
-    storyButton: 'LEER LA HISTORIA COMPLETA',
-    fragmentLead: 'Todo comenzó con este fragmento.',
+    storyButton: 'LEER LA HISTORIA COMPLETA', fragmentLead: 'Todo comenzó con este fragmento.',
     fragmentCaption: 'Fragmento de la pintura 25002 — «El Huerto de Getsemaní»',
-    fragmentAlt: 'Fragmento de la pintura 25002 — El Huerto de Getsemaní',
-    gallery: 'GALERÍA'
+    fragmentAlt: 'Fragmento de la pintura 25002 — El Huerto de Getsemaní', gallery: 'GALERÍA'
   },
   uk: {
-    label: 'UA',
-    lines: ['МИСТЕЦТВО ЯК', 'ПРОСЛАВА БОГА'],
-    documentLanguage: 'uk',
+    lines: ['МИСТЕЦТВО ЯК', 'ПРОСЛАВА БОГА'], documentLanguage: 'uk',
     storyTitle: 'ЧОМУ АВТОР ЗАЛИШАЄТЬСЯ НЕВІДОМИМ?',
     storyParagraphs: [
       'Ці картини не починаються з образу.',
@@ -114,11 +104,9 @@ const translations = {
       'Тому ім’я автора залишається прихованим.',
       'Бо значення має не рука, яка тримає пензель, а Той, Хто її веде.'
     ],
-    storyButton: 'ПРОЧИТАТИ ПОВНУ ІСТОРІЮ',
-    fragmentLead: 'Усе почалося з цього фрагмента.',
+    storyButton: 'ПРОЧИТАТИ ПОВНУ ІСТОРІЮ', fragmentLead: 'Усе почалося з цього фрагмента.',
     fragmentCaption: 'Фрагмент картини 25002 — «Гетсиманський Сад»',
-    fragmentAlt: 'Фрагмент картини 25002 — Гетсиманський Сад',
-    gallery: 'ГАЛЕРЕЯ'
+    fragmentAlt: 'Фрагмент картини 25002 — Гетсиманський Сад', gallery: 'ГАЛЕРЕЯ'
   }
 };
 
@@ -134,67 +122,22 @@ const galleryHeading = document.querySelector('[data-gallery-heading]');
 
 function setLanguage(language) {
   const selected = translations[language] || translations.en;
-
-  tagline.replaceChildren(
-    ...selected.lines.map((line) => {
-      const span = document.createElement('span');
-      span.textContent = line;
-      return span;
-    })
-  );
-
+  tagline.replaceChildren(...selected.lines.map((line) => { const span=document.createElement('span'); span.textContent=line; return span; }));
   storyTitle.textContent = selected.storyTitle;
-  storyBody.replaceChildren(
-    ...selected.storyParagraphs.map((paragraph, index) => {
-      const p = document.createElement('p');
-      p.textContent = paragraph;
-      if (index === selected.storyParagraphs.length - 1) p.className = 'story-emphasis';
-      return p;
-    })
-  );
+  storyBody.replaceChildren(...selected.storyParagraphs.map((paragraph,index)=>{ const p=document.createElement('p'); p.textContent=paragraph; if(index===selected.storyParagraphs.length-1)p.className='story-emphasis'; return p; }));
   storyButton.replaceChildren(document.createTextNode(selected.storyButton + ' '));
-  const arrow = document.createElement('span');
-  arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '→';
-  storyButton.append(arrow);
-  fragmentLead.textContent = selected.fragmentLead;
-  fragmentCaption.textContent = selected.fragmentCaption;
-  fragmentImage.alt = selected.fragmentAlt;
-  galleryHeading.textContent = selected.gallery;
-
-  document.documentElement.lang = selected.documentLanguage;
-  localStorage.setItem('artworkship-language', language);
-
-  languageButtons.forEach((button) => {
-    const active = button.dataset.language === language;
-    button.classList.toggle('is-active', active);
-    button.setAttribute('aria-current', active ? 'true' : 'false');
-  });
+  const arrow=document.createElement('span'); arrow.setAttribute('aria-hidden','true'); arrow.textContent='→'; storyButton.append(arrow);
+  fragmentLead.textContent=selected.fragmentLead; fragmentCaption.textContent=selected.fragmentCaption; fragmentImage.alt=selected.fragmentAlt; galleryHeading.textContent=selected.gallery;
+  document.documentElement.lang=selected.documentLanguage; localStorage.setItem('artworkship-language',language);
+  languageButtons.forEach((button)=>{ const active=button.dataset.language===language; button.classList.toggle('is-active',active); button.setAttribute('aria-current',active?'true':'false'); });
 }
+languageButtons.forEach((button)=>button.addEventListener('click',()=>setLanguage(button.dataset.language)));
+const savedLanguage=localStorage.getItem('artworkship-language');
+const browserLanguage=navigator.language.toLowerCase();
+setLanguage(savedLanguage || (browserLanguage.startsWith('es')?'es':browserLanguage.startsWith('uk')?'uk':'en'));
 
-languageButtons.forEach((button) => {
-  button.addEventListener('click', () => setLanguage(button.dataset.language));
-});
-
-const savedLanguage = localStorage.getItem('artworkship-language');
-const browserLanguage = navigator.language.toLowerCase();
-const initialLanguage =
-  savedLanguage ||
-  (browserLanguage.startsWith('es') ? 'es' :
-   browserLanguage.startsWith('uk') ? 'uk' : 'en');
-
-setLanguage(initialLanguage);
-
-const revealElements = [...document.querySelectorAll('.reveal')];
+const revealElements=[...document.querySelectorAll('.reveal')];
 if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  revealElements.forEach((element) => revealObserver.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add('is-visible'));
-}
+  const observer=new IntersectionObserver((entries,obs)=>entries.forEach((entry)=>{ if(entry.isIntersecting){entry.target.classList.add('is-visible'); obs.unobserve(entry.target);} }),{threshold:.12});
+  revealElements.forEach((element)=>observer.observe(element));
+} else { revealElements.forEach((element)=>element.classList.add('is-visible')); }
