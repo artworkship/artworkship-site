@@ -1,0 +1,3 @@
+Added a fixed red rk logo to the upper-left corner.
+The logo links back to the top and adapts for mobile screens.
+The favicon files already present in the repository are now connected in index.html.
