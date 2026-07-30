@@ -5,36 +5,35 @@ const viewerNumber = document.querySelector('.viewer-number');
 const closeButton = document.querySelector('.viewer-close');
 const previousButton = document.querySelector('.viewer-prev');
 const nextButton = document.querySelector('.viewer-next');
-const enterButton = document.querySelector('.enter');
 
 let currentIndex = 0;
+let touchStartX = 0;
 
 function showArtwork(index) {
   currentIndex = (index + works.length) % works.length;
   const work = works[currentIndex];
-  const source = work.querySelector('img');
-  viewerImage.src = source.src;
-  viewerImage.alt = source.alt;
+  const image = work.querySelector('img');
+
+  viewerImage.src = image.currentSrc || image.src;
+  viewerImage.alt = image.alt;
   viewerNumber.textContent = work.dataset.number;
 }
 
 function openArtwork(index) {
   showArtwork(index);
   dialog.showModal();
+  document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
 }
 
 function closeArtwork() {
   dialog.close();
+  document.documentElement.style.overflow = '';
   document.body.style.overflow = '';
 }
 
 works.forEach((work, index) => {
   work.querySelector('button').addEventListener('click', () => openArtwork(index));
-});
-
-enterButton.addEventListener('click', () => {
-  document.querySelector('#works').scrollIntoView({ behavior: 'smooth' });
 });
 
 closeButton.addEventListener('click', closeArtwork);
@@ -44,6 +43,16 @@ nextButton.addEventListener('click', () => showArtwork(currentIndex + 1));
 dialog.addEventListener('click', (event) => {
   if (event.target === dialog) closeArtwork();
 });
+
+dialog.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0].clientX;
+}, { passive: true });
+
+dialog.addEventListener('touchend', (event) => {
+  const delta = event.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(delta) < 55) return;
+  showArtwork(currentIndex + (delta < 0 ? 1 : -1));
+}, { passive: true });
 
 document.addEventListener('keydown', (event) => {
   if (!dialog.open) return;

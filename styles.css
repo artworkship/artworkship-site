@@ -1,8 +1,6 @@
 :root {
-  --blood: #8f160f;
   --black: #000;
   --white: #fff;
-  --muted: #777;
 }
 
 * {
@@ -10,15 +8,15 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: var(--white);
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  color: var(--black);
   background: var(--white);
-  font-family: "DIN Condensed", "Arial Narrow", Arial, sans-serif;
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
@@ -26,8 +24,7 @@ button {
 }
 
 .intro {
-  position: relative;
-  min-height: 100svh;
+  min-height: 72svh;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -35,42 +32,21 @@ button {
 }
 
 .logo {
-  width: min(100vw, 1690px);
-  height: 100svh;
+  display: block;
+  width: min(94vw, 1500px);
+  height: 72svh;
   object-fit: cover;
   object-position: center;
-  display: block;
-}
-
-.enter {
-  position: absolute;
-  left: 50%;
-  bottom: 26px;
-  transform: translateX(-50%);
-  border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.52);
-  padding: 12px 18px;
-  text-transform: lowercase;
-  letter-spacing: 0.08em;
-  font-size: 13px;
-  cursor: pointer;
-  transition: color 180ms ease;
-}
-
-.enter:hover,
-.enter:focus-visible {
-  color: var(--white);
 }
 
 .gallery {
   width: min(100%, 1500px);
   margin: 0 auto;
-  padding: clamp(70px, 10vw, 150px) clamp(18px, 5vw, 72px);
+  padding: clamp(42px, 6vw, 90px) clamp(14px, 4vw, 58px);
 }
 
 .work {
-  margin: 0 0 clamp(90px, 13vw, 190px);
+  margin: 0 0 clamp(48px, 7vw, 100px);
 }
 
 .work:last-child {
@@ -94,15 +70,18 @@ button {
 }
 
 .footer {
-  min-height: 40vh;
+  min-height: 42svh;
   display: grid;
   place-items: center;
-  padding: 70px 20px;
+  overflow: hidden;
   background: var(--black);
-  color: var(--blood);
-  font-size: clamp(76px, 12vw, 170px);
-  font-weight: 700;
-  line-height: 1;
+}
+
+.footer img {
+  width: min(70vw, 900px);
+  max-height: 38svh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .viewer {
@@ -113,12 +92,13 @@ button {
   margin: 0;
   border: 0;
   padding: 0;
-  background: rgba(0, 0, 0, 0.96);
-  color: white;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.985);
+  color: var(--white);
 }
 
 .viewer::backdrop {
-  background: rgba(0, 0, 0, 0.96);
+  background: rgba(0, 0, 0, 0.985);
 }
 
 .viewer[open] {
@@ -127,27 +107,28 @@ button {
 }
 
 .viewer figure {
-  margin: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 34px clamp(28px, 6vw, 96px) 18px;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
   place-items: center;
-  padding: 42px clamp(18px, 5vw, 80px) 24px;
 }
 
 .viewer-image {
   max-width: 100%;
-  max-height: calc(100dvh - 88px);
+  max-height: calc(100dvh - 72px);
   object-fit: contain;
+  user-select: none;
 }
 
 .viewer-number {
-  min-height: 20px;
+  min-height: 16px;
   margin-top: 8px;
-  color: rgba(255,255,255,.62);
-  font-size: 12px;
-  letter-spacing: .08em;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 11px;
+  letter-spacing: 0.1em;
 }
 
 .viewer-close,
@@ -157,27 +138,35 @@ button {
   z-index: 2;
   border: 0;
   background: transparent;
-  color: rgba(255,255,255,.66);
+  color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .viewer-close {
-  top: 8px;
-  right: 13px;
+  top: max(6px, env(safe-area-inset-top));
+  right: max(8px, env(safe-area-inset-right));
   padding: 8px 14px;
   font-size: 34px;
+  line-height: 1;
 }
 
 .viewer-prev,
 .viewer-next {
   top: 50%;
   transform: translateY(-50%);
-  padding: 24px 14px;
-  font-size: 44px;
+  padding: 24px 12px;
+  font-size: 42px;
+  line-height: 1;
 }
 
-.viewer-prev { left: 0; }
-.viewer-next { right: 0; }
+.viewer-prev {
+  left: max(0px, env(safe-area-inset-left));
+}
+
+.viewer-next {
+  right: max(0px, env(safe-area-inset-right));
+}
 
 .viewer-close:hover,
 .viewer-prev:hover,
@@ -186,30 +175,45 @@ button {
 .viewer-prev:focus-visible,
 .viewer-next:focus-visible {
   color: var(--white);
+  outline: none;
 }
 
 @media (max-width: 700px) {
   .intro {
-    min-height: 72svh;
+    min-height: 58svh;
   }
 
   .logo {
-    height: 72svh;
+    width: 100vw;
+    height: 58svh;
   }
 
   .gallery {
-    padding-left: 0;
-    padding-right: 0;
+    width: 100%;
+    padding: 34px 0;
   }
 
   .work {
-    margin-bottom: 82px;
+    margin-bottom: 42px;
+  }
+
+  .footer {
+    min-height: 34svh;
+  }
+
+  .footer img {
+    width: 82vw;
+    max-height: 30svh;
+  }
+
+  .viewer figure {
+    padding: 28px 12px 14px;
   }
 
   .viewer-prev,
   .viewer-next {
-    font-size: 34px;
-    padding-inline: 8px;
+    font-size: 32px;
+    padding-inline: 7px;
   }
 }
 
