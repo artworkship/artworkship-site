@@ -61,27 +61,23 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowRight') showArtwork(currentIndex + 1);
 });
 
-
-
-// Тимчасовий перемикач мов: інтерфейс уже готовий для EN / ES / UA,
-// але до додавання перекладів вміст сторінки залишається українською.
 const languageButtons = [...document.querySelectorAll('[data-language]')];
 
-function selectInterfaceLanguage(language) {
+function selectLanguage(language) {
+  // Переклади EN та ES будуть додані наступним кроком.
+  // Поки весь зміст сторінки залишається українською.
+  document.documentElement.lang = 'uk';
+  localStorage.setItem('artworkship-language-choice', language);
+
   languageButtons.forEach((button) => {
     const active = button.dataset.language === language;
     button.classList.toggle('is-active', active);
     button.setAttribute('aria-current', active ? 'true' : 'false');
   });
-
-  localStorage.setItem('artworkship-language', language);
-  document.documentElement.lang = 'uk';
 }
 
 languageButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    selectInterfaceLanguage(button.dataset.language);
-  });
+  button.addEventListener('click', () => selectLanguage(button.dataset.language));
 });
 
-selectInterfaceLanguage(localStorage.getItem('artworkship-language') || 'uk');
+selectLanguage(localStorage.getItem('artworkship-language-choice') || 'uk');
