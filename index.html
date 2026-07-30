@@ -24,12 +24,21 @@
 </head>
 <body>
   <header class="intro" aria-label="rk">
-    <img class="logo" src="assets/brand/rk-logo.png" alt="rk">
-    <div class="taglines" aria-label="Art as worship">
-      <p lang="en">Art as Worship</p>
-      <p lang="es">Arte como adoración a Dios</p>
-      <p lang="uk">Мистецтво як прослава Бога</p>
+    <div class="language-switcher" aria-label="Language selector">
+      <button class="language-button" type="button" aria-expanded="false" aria-controls="language-menu">
+        <span class="current-language">EN</span>
+        <span class="language-arrow" aria-hidden="true">⌄</span>
+      </button>
+      <div class="language-menu" id="language-menu" hidden>
+        <button type="button" data-language="en">EN</button>
+        <button type="button" data-language="es">ES</button>
+        <button type="button" data-language="uk">UA</button>
+      </div>
     </div>
+
+    <img class="logo" src="assets/brand/rk-logo.png" alt="rk">
+
+    <h1 class="tagline" data-tagline aria-live="polite">Art as Worship</h1>
   </header>
 
   <main class="gallery" aria-label="Works">

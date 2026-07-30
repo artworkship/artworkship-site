@@ -24,12 +24,13 @@ button {
 }
 
 .intro {
-  min-height: 82svh;
+  position: relative;
+  min-height: 88svh;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
   place-items: center;
   overflow: hidden;
-  padding-bottom: clamp(28px, 4vw, 52px);
+  padding: 0 24px clamp(38px, 6vw, 72px);
   background: var(--black);
 }
 
@@ -41,26 +42,72 @@ button {
   object-position: center;
 }
 
-.taglines {
-  display: grid;
-  gap: 7px;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.taglines p {
+.tagline {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(12px, 1.25vw, 16px);
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  color: var(--white);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: clamp(30px, 5.2vw, 76px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.13em;
 }
 
-.taglines p:first-child {
-  color: var(--white);
-  font-size: clamp(15px, 1.7vw, 21px);
+.language-switcher {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  z-index: 4;
+}
+
+.language-button,
+.language-menu button {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  font: inherit;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 4px;
+  font-size: 13px;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
+}
+
+.language-arrow {
+  transform: translateY(-1px);
+  font-size: 16px;
+}
+
+.language-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 62px;
+  padding: 6px 0;
+  background: rgba(16, 16, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.language-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.language-button:hover,
+.language-button:focus-visible,
+.language-menu button:hover,
+.language-menu button:focus-visible {
+  color: var(--white);
+  outline: none;
 }
 
 .gallery {
@@ -204,8 +251,8 @@ button {
 
 @media (max-width: 700px) {
   .intro {
-    min-height: 70svh;
-    padding-bottom: 28px;
+    min-height: 72svh;
+    padding: 0 18px 34px;
   }
 
   .logo {
@@ -213,18 +260,15 @@ button {
     height: 52svh;
   }
 
-  .taglines {
-    gap: 6px;
+  .tagline {
+    max-width: 92vw;
+    font-size: clamp(24px, 8.5vw, 42px);
+    letter-spacing: 0.09em;
   }
 
-  .taglines p {
-    font-size: 11px;
-    letter-spacing: 0.055em;
-  }
-
-  .taglines p:first-child {
-    font-size: 14px;
-    letter-spacing: 0.12em;
+  .language-switcher {
+    top: max(12px, env(safe-area-inset-top));
+    right: max(14px, env(safe-area-inset-right));
   }
 
   .gallery {
