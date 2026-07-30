@@ -24,19 +24,43 @@ button {
 }
 
 .intro {
-  min-height: 72svh;
+  min-height: 82svh;
   display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   place-items: center;
   overflow: hidden;
+  padding-bottom: clamp(28px, 4vw, 52px);
   background: var(--black);
 }
 
 .logo {
   display: block;
   width: min(94vw, 1500px);
-  height: 72svh;
+  height: 66svh;
   object-fit: cover;
   object-position: center;
+}
+
+.taglines {
+  display: grid;
+  gap: 7px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.taglines p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(12px, 1.25vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.taglines p:first-child {
+  color: var(--white);
+  font-size: clamp(15px, 1.7vw, 21px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .gallery {
@@ -180,12 +204,27 @@ button {
 
 @media (max-width: 700px) {
   .intro {
-    min-height: 58svh;
+    min-height: 70svh;
+    padding-bottom: 28px;
   }
 
   .logo {
     width: 100vw;
-    height: 58svh;
+    height: 52svh;
+  }
+
+  .taglines {
+    gap: 6px;
+  }
+
+  .taglines p {
+    font-size: 11px;
+    letter-spacing: 0.055em;
+  }
+
+  .taglines p:first-child {
+    font-size: 14px;
+    letter-spacing: 0.12em;
   }
 
   .gallery {
