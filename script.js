@@ -65,51 +65,47 @@ document.addEventListener('keydown', (event) => {
 const translations = {
   en: {
     label: 'EN',
-    tagline: 'Art as Worship',
+    lines: ['ART AS', 'WORSHIP'],
     documentLanguage: 'en'
   },
   es: {
     label: 'ES',
-    tagline: 'Arte como adoración a Dios',
+    lines: ['ARTE COMO', 'ADORACIÓN A DIOS'],
     documentLanguage: 'es'
   },
   uk: {
     label: 'UA',
-    tagline: 'Мистецтво як прослава Бога',
+    lines: ['МИСТЕЦТВО ЯК', 'ПРОСЛАВА БОГА'],
     documentLanguage: 'uk'
   }
 };
 
-const languageButton = document.querySelector('.language-button');
-const languageMenu = document.querySelector('.language-menu');
-const currentLanguageLabel = document.querySelector('.current-language');
+const languageButtons = [...document.querySelectorAll('[data-language]')];
 const tagline = document.querySelector('[data-tagline]');
 
 function setLanguage(language) {
   const selected = translations[language] || translations.en;
-  tagline.textContent = selected.tagline;
-  currentLanguageLabel.textContent = selected.label;
+
+  tagline.replaceChildren(
+    ...selected.lines.map((line) => {
+      const span = document.createElement('span');
+      span.textContent = line;
+      return span;
+    })
+  );
+
   document.documentElement.lang = selected.documentLanguage;
   localStorage.setItem('artworkship-language', language);
-  languageMenu.hidden = true;
-  languageButton.setAttribute('aria-expanded', 'false');
+
+  languageButtons.forEach((button) => {
+    const active = button.dataset.language === language;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-current', active ? 'true' : 'false');
+  });
 }
 
-languageButton.addEventListener('click', () => {
-  const willOpen = languageMenu.hidden;
-  languageMenu.hidden = !willOpen;
-  languageButton.setAttribute('aria-expanded', String(willOpen));
-});
-
-languageMenu.querySelectorAll('[data-language]').forEach((button) => {
+languageButtons.forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.language));
-});
-
-document.addEventListener('click', (event) => {
-  if (!event.target.closest('.language-switcher')) {
-    languageMenu.hidden = true;
-    languageButton.setAttribute('aria-expanded', 'false');
-  }
 });
 
 const savedLanguage = localStorage.getItem('artworkship-language');

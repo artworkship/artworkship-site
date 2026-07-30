@@ -25,21 +25,75 @@ button {
 
 .intro {
   position: relative;
-  min-height: 88svh;
+  min-height: 100svh;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
   place-items: center;
   overflow: hidden;
-  padding: 0 24px clamp(38px, 6vw, 72px);
+  padding: 0 clamp(20px, 5vw, 82px);
   background: var(--black);
 }
 
-.logo {
+.hero-logo {
+  position: absolute;
+  top: clamp(28px, 5vh, 58px);
+  left: 50%;
+  transform: translateX(-50%);
   display: block;
-  width: min(94vw, 1500px);
-  height: 66svh;
-  object-fit: cover;
-  object-position: center;
+  width: clamp(150px, 15vw, 245px);
+  height: auto;
+}
+
+.language-switcher {
+  position: absolute;
+  top: clamp(32px, 5.2vh, 62px);
+  right: clamp(22px, 5vw, 78px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.language-option {
+  position: relative;
+  border: 0;
+  padding: 5px 0 11px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  font-size: clamp(12px, 1.2vw, 17px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.language-option::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #c51a0c;
+  transform: scaleX(0);
+  transition: transform 180ms ease;
+}
+
+.language-option:hover,
+.language-option:focus-visible,
+.language-option.is-active {
+  color: var(--white);
+  outline: none;
+}
+
+.language-option.is-active::after {
+  transform: scaleX(1);
+}
+
+.hero-message {
+  width: min(92vw, 1120px);
+  display: grid;
+  justify-items: center;
+  gap: clamp(26px, 4.5vh, 50px);
+  transform: translateY(3vh);
 }
 
 .tagline {
@@ -47,67 +101,20 @@ button {
   color: var(--white);
   text-align: center;
   text-transform: uppercase;
-  font-size: clamp(30px, 5.2vw, 76px);
+  font-size: clamp(56px, 10.2vw, 166px);
   font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: 0.13em;
+  line-height: 0.94;
+  letter-spacing: 0.025em;
 }
 
-.language-switcher {
-  position: absolute;
-  top: max(18px, env(safe-area-inset-top));
-  right: max(18px, env(safe-area-inset-right));
-  z-index: 4;
-}
-
-.language-button,
-.language-menu button {
-  border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.78);
-  cursor: pointer;
-  font: inherit;
-}
-
-.language-button {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 4px;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-}
-
-.language-arrow {
-  transform: translateY(-1px);
-  font-size: 16px;
-}
-
-.language-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  min-width: 62px;
-  padding: 6px 0;
-  background: rgba(16, 16, 16, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.language-menu button {
+.tagline span {
   display: block;
-  width: 100%;
-  padding: 8px 12px;
-  text-align: left;
-  font-size: 12px;
-  letter-spacing: 0.12em;
 }
 
-.language-button:hover,
-.language-button:focus-visible,
-.language-menu button:hover,
-.language-menu button:focus-visible {
-  color: var(--white);
-  outline: none;
+.hero-accent {
+  width: clamp(72px, 9vw, 138px);
+  height: 2px;
+  background: #c51a0c;
 }
 
 .gallery {
@@ -251,24 +258,37 @@ button {
 
 @media (max-width: 700px) {
   .intro {
-    min-height: 72svh;
-    padding: 0 18px 34px;
+    min-height: 100svh;
+    padding: 0 16px;
   }
 
-  .logo {
-    width: 100vw;
-    height: 52svh;
-  }
-
-  .tagline {
-    max-width: 92vw;
-    font-size: clamp(24px, 8.5vw, 42px);
-    letter-spacing: 0.09em;
+  .hero-logo {
+    top: max(22px, env(safe-area-inset-top));
+    width: clamp(132px, 42vw, 182px);
   }
 
   .language-switcher {
-    top: max(12px, env(safe-area-inset-top));
-    right: max(14px, env(safe-area-inset-right));
+    top: max(74px, calc(env(safe-area-inset-top) + 58px));
+    right: 50%;
+    transform: translateX(50%);
+    gap: 12px;
+  }
+
+  .language-option {
+    font-size: 12px;
+  }
+
+  .hero-message {
+    width: 96vw;
+    transform: translateY(4vh);
+    gap: 28px;
+  }
+
+  .tagline {
+    max-width: 94vw;
+    font-size: clamp(46px, 16vw, 78px);
+    line-height: 0.98;
+    letter-spacing: 0.01em;
   }
 
   .gallery {
