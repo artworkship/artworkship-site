@@ -130,6 +130,75 @@ html[lang="uk"] .tagline {
   background: #c51a0c;
 }
 
+/* Scripture section: isolated styles so the existing hero and gallery remain unchanged. */
+.scripture {
+  min-height: 100svh;
+  padding: clamp(72px, 10vh, 132px) clamp(20px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  color: rgba(255, 255, 255, 0.76);
+  text-align: center;
+}
+
+.scripture-quote {
+  width: min(100%, 900px);
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(19px, 2.15vw, 34px);
+  font-weight: 400;
+  line-height: 1.48;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.scripture-quote span {
+  display: block;
+}
+
+.scripture-accent {
+  width: clamp(72px, 9vw, 108px);
+  height: 1px;
+  margin-top: clamp(32px, 5vh, 54px);
+  background: #c51a0c;
+}
+
+.scripture-reference {
+  margin: clamp(22px, 3vh, 34px) 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(11px, 1vw, 15px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.gallery-title {
+  position: relative;
+  margin: 0 0 clamp(38px, 5vw, 68px);
+  padding-bottom: 22px;
+  color: var(--black);
+  text-align: center;
+  font-size: clamp(17px, 1.7vw, 25px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.gallery-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 48px;
+  height: 2px;
+  background: #c51a0c;
+  transform: translateX(-50%);
+}
+
 .gallery {
   width: min(100%, 1500px);
   margin: 0 auto;
@@ -341,6 +410,33 @@ html[lang="uk"] .tagline {
   .viewer-next {
     font-size: 32px;
     padding-inline: 7px;
+  }
+
+  .scripture {
+    min-height: 100svh;
+    padding: 72px 17px;
+  }
+
+  .scripture-quote {
+    width: 100%;
+    font-size: clamp(15px, 4.15vw, 19px);
+    line-height: 1.62;
+    letter-spacing: 0.075em;
+  }
+
+  .scripture-accent {
+    margin-top: 34px;
+  }
+
+  .scripture-reference {
+    margin-top: 24px;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+  }
+
+  .gallery-title {
+    margin-bottom: 34px;
+    font-size: 16px;
   }
 }
 

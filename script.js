@@ -66,22 +66,69 @@ const translations = {
   en: {
     label: 'EN',
     lines: ['ART AS', 'WORSHIP'],
+    scripture: [
+      '“BUT THE HOUR IS COMING,',
+      'AND IS NOW HERE,',
+      'WHEN THE TRUE WORSHIPPERS',
+      'WILL WORSHIP THE FATHER',
+      'IN SPIRIT AND TRUTH,',
+      'FOR THE FATHER IS SEEKING',
+      'SUCH PEOPLE TO WORSHIP HIM.',
+      'GOD IS SPIRIT,',
+      'AND THOSE WHO WORSHIP HIM',
+      'MUST WORSHIP IN SPIRIT AND TRUTH.”'
+    ],
+    scriptureReference: 'JOHN 4:23–24',
+    galleryTitle: 'GALLERY',
     documentLanguage: 'en'
   },
   es: {
     label: 'ES',
     lines: ['ARTE COMO', 'ADORACIÓN A DIOS'],
+    scripture: [
+      '“PERO LA HORA VIENE,',
+      'Y YA ES AHORA,',
+      'CUANDO LOS VERDADEROS ADORADORES',
+      'ADORARÁN AL PADRE',
+      'EN ESPÍRITU Y EN VERDAD,',
+      'PORQUE EL PADRE BUSCA',
+      'A TALES PERSONAS.',
+      'DIOS ES ESPÍRITU,',
+      'Y LOS QUE LE ADORAN,',
+      'DEBEN ADORARLE',
+      'EN ESPÍRITU Y EN VERDAD.”'
+    ],
+    scriptureReference: 'JUAN 4:23–24',
+    galleryTitle: 'GALERÍA',
     documentLanguage: 'es'
   },
   uk: {
     label: 'UA',
     lines: ['МИСТЕЦТВО ЯК', 'ПРОСЛАВА БОГА'],
+    scripture: [
+      '“АЛЕ НАДХОДИТЬ ЧАС,',
+      'І ТЕПЕР ВІН Є,',
+      'КОЛИ ПРАВДИВІ ПОКЛОННИКИ',
+      'ПОКЛОНЯТИМУТЬСЯ ОТЦЕВІ',
+      'В ДУСІ ТА ПРАВДІ,',
+      'БО ОТЕЦЬ ШУКАЄ СОБІ',
+      'САМЕ ТАКИХ.',
+      'БОГ Є ДУХ,',
+      'І ТІ, ЩО ПОКЛОНЯЮТЬСЯ ЙОМУ,',
+      'ПОВИННІ ПОКЛОНЯТИСЯ',
+      'В ДУСІ ТА ПРАВДІ.”'
+    ],
+    scriptureReference: 'ІВАНА 4:23–24',
+    galleryTitle: 'ГАЛЕРЕЯ',
     documentLanguage: 'uk'
   }
 };
 
 const languageButtons = [...document.querySelectorAll('[data-language]')];
 const tagline = document.querySelector('[data-tagline]');
+const scriptureQuote = document.querySelector('[data-scripture-quote]');
+const scriptureReference = document.querySelector('[data-scripture-reference]');
+const galleryTitle = document.querySelector('[data-gallery-title]');
 
 function setLanguage(language) {
   const selected = translations[language] || translations.en;
@@ -93,6 +140,16 @@ function setLanguage(language) {
       return span;
     })
   );
+
+  scriptureQuote.replaceChildren(
+    ...selected.scripture.map((line) => {
+      const span = document.createElement('span');
+      span.textContent = line;
+      return span;
+    })
+  );
+  scriptureReference.textContent = selected.scriptureReference;
+  galleryTitle.textContent = selected.galleryTitle;
 
   document.documentElement.lang = selected.documentLanguage;
   localStorage.setItem('artworkship-language', language);
