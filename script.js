@@ -80,6 +80,30 @@ const translations = {
     ],
     scriptureReference: 'JOHN 4:23–24',
     galleryTitle: 'GALLERY',
+    projectTitle: 'PAINTING AS WORSHIP',
+    projectCopy: [
+      "This project was born as a response to God's calling.",
+      'The artist creates each painting without a sketch, without a predetermined subject, and without an expected outcome.',
+      'There is only a blank canvas, worship of God, and a prayer asking the Holy Spirit to guide every movement of the brush.',
+      'As the work unfolds, images begin to emerge within the abstract forms—images the artist does not consciously create.',
+      'The most remarkable part is that other people notice them first.',
+      'These paintings reveal biblical imagery.',
+      'This is how artworkship was born—not as a way to express oneself, but as an act of worship to God.'
+    ],
+    authorTitle: 'RK',
+    authorCopy: [
+      'The name and face of the artist remain hidden.',
+      'The artist does not seek publicity or personal attention.',
+      'He believes that the focus should not be on the artist, but on God.',
+      'This project was never created for fame, popularity, or human recognition. It is an act of humility and obedience before the Creator.',
+      'The artist remains only the hand that holds the brush.',
+      { text: 'For God to work through this world, He chooses to work through us.', highlight: true },
+      'The artist deliberately remains in the background so that all glory, honor, and praise belong to God alone.',
+      'You can be sure that these paintings will speak to you in their own way.',
+      'You will discover exactly what is meant to be revealed to you.',
+      'Yet there have already been occasions when different people, independently of one another, recognized the very same biblical scenes within the same painting.'
+    ],
+    storyButton: 'READ THE FULL STORY OF THE ARTIST',
     documentLanguage: 'en'
   },
   es: {
@@ -100,6 +124,30 @@ const translations = {
     ],
     scriptureReference: 'JUAN 4:23–24',
     galleryTitle: 'GALERÍA',
+    projectTitle: 'LA PINTURA COMO ADORACIÓN',
+    projectCopy: [
+      'Este proyecto nació como respuesta al llamado de Dios.',
+      'El autor pinta cada obra sin boceto, sin un tema predeterminado y sin un resultado esperado.',
+      'Solo existe el lienzo en blanco, la alabanza a Dios y una oración pidiendo al Espíritu Santo que guíe cada movimiento del pincel.',
+      'Con el tiempo, entre las formas abstractas comienzan a revelarse imágenes que el autor no crea de manera consciente.',
+      'Lo más sorprendente es que otras personas suelen descubrirlas primero.',
+      'En estos lienzos aparecen precisamente imágenes bíblicas.',
+      'Así nació artworkship: la pintura no como una forma de expresarse, sino como un acto de adoración a Dios.'
+    ],
+    authorTitle: 'RK',
+    authorCopy: [
+      'El nombre y el rostro del autor de este proyecto permanecen ocultos.',
+      'El autor no busca fama ni atención personal.',
+      'Está convencido de que el centro no debe ser el artista, sino Dios.',
+      'Este proyecto no nació para alcanzar fama, popularidad o reconocimiento humano. Es un acto de humildad y obediencia del autor ante el Creador.',
+      'El autor permanece únicamente como la mano que sostiene el pincel.',
+      { text: 'Porque para que Dios actúe en este mundo, Él ha elegido actuar a través de nosotros.', highlight: true },
+      'El autor permanece deliberadamente en la sombra para que toda la gloria, el honor y la alabanza pertenezcan únicamente a Dios.',
+      'Puedes estar seguro de que estas pinturas hablarán contigo de una manera única.',
+      'Descubrirás exactamente lo que está destinado a revelarse a ti.',
+      'Sin embargo, ya ha ocurrido que diferentes personas, de manera totalmente independiente, han reconocido las mismas escenas bíblicas en una misma pintura.'
+    ],
+    storyButton: 'LEER LA HISTORIA COMPLETA DEL AUTOR',
     documentLanguage: 'es'
   },
   uk: {
@@ -120,6 +168,30 @@ const translations = {
     ],
     scriptureReference: 'ІВАНА 4:23–24',
     galleryTitle: 'ГАЛЕРЕЯ',
+    projectTitle: 'ЖИВОПИС ЯК ПОКЛОНІННЯ',
+    projectCopy: [
+      'Цей проєкт народився як відповідь на Божий заклик.',
+      'Автор пише роботи без ескізу, без заздалегідь визначеного сюжету і без очікуваного результату.',
+      'Є лише чисте полотно, прослава Бога і молитва до Святого Духа з проханням провадити кожен рух пензля.',
+      'Згодом серед абстрактних форм починають відкриватися образи, яких автор свідомо не створює.',
+      'Найдивовижніше те, що першими їх помічали інші люди.',
+      'На даних роботах з’являються саме біблійні образи.',
+      'Так народився artworkship — мистецтво не як спосіб виразити себе, а як акт поклоніння Богові.'
+    ],
+    authorTitle: 'RK',
+    authorCopy: [
+      'Ім’я та обличчя автора цього проєкту залишаються прихованими.',
+      'Автор не шукає публічності і зайвої уваги до себе.',
+      'Він вважає, що в центрі має бути не художник, а Бог.',
+      'Цей проєкт не народився заради слави, популярності чи визнання людини. Це акт покори і послуху автора перед Творцем.',
+      'Автор залишається лише рукою, яка тримає пензель.',
+      { text: 'Адже для того, щоб Бог діяв — Йому потрібні ми.', highlight: true },
+      'Автор свідомо залишається в тіні, щоб уся слава, честь і хвала належали лише Богові.',
+      'Можете бути впевнені, картини заговорять до вас по-своєму.',
+      'Вам відкриється саме те, що має відкритися вам.',
+      'Але були випадки, коли різні люди паралельно бачили одні і ті ж сюжети із Біблії.'
+    ],
+    storyButton: 'ЧИТАТИ ПОВНУ ІСТОРІЮ АВТОРА',
     documentLanguage: 'uk'
   }
 };
@@ -129,6 +201,26 @@ const tagline = document.querySelector('[data-tagline]');
 const scriptureQuote = document.querySelector('[data-scripture-quote]');
 const scriptureReference = document.querySelector('[data-scripture-reference]');
 const galleryTitle = document.querySelector('[data-gallery-title]');
+const projectTitle = document.querySelector('[data-project-title]');
+const projectCopy = document.querySelector('[data-project-copy]');
+const authorTitle = document.querySelector('[data-author-title]');
+const authorCopy = document.querySelector('[data-author-copy]');
+const storyButton = document.querySelector('[data-story-button]');
+
+function replaceParagraphs(container, items) {
+  container.replaceChildren(
+    ...items.map((item) => {
+      const paragraph = document.createElement('p');
+      if (typeof item === 'string') {
+        paragraph.textContent = item;
+      } else {
+        paragraph.textContent = item.text;
+        if (item.highlight) paragraph.classList.add('story-highlight');
+      }
+      return paragraph;
+    })
+  );
+}
 
 function setLanguage(language) {
   const selected = translations[language] || translations.en;
@@ -150,6 +242,11 @@ function setLanguage(language) {
   );
   scriptureReference.textContent = selected.scriptureReference;
   galleryTitle.textContent = selected.galleryTitle;
+  projectTitle.textContent = selected.projectTitle;
+  replaceParagraphs(projectCopy, selected.projectCopy);
+  authorTitle.textContent = selected.authorTitle;
+  replaceParagraphs(authorCopy, selected.authorCopy);
+  storyButton.firstChild.textContent = `${selected.storyButton} `;
 
   document.documentElement.lang = selected.documentLanguage;
   localStorage.setItem('artworkship-language', language);
@@ -163,6 +260,10 @@ function setLanguage(language) {
 
 languageButtons.forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.language));
+});
+
+storyButton.addEventListener('click', (event) => {
+  if (storyButton.getAttribute('aria-disabled') === 'true') event.preventDefault();
 });
 
 const savedLanguage = localStorage.getItem('artworkship-language');
