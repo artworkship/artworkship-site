@@ -231,17 +231,42 @@ html[lang="uk"] .tagline {
 
 .footer {
   min-height: 42svh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.8vh, 20px);
   overflow: hidden;
+  padding: clamp(28px, 5vh, 56px) 20px;
   background: var(--black);
 }
 
 .footer img {
-  width: min(70vw, 900px);
-  max-height: 38svh;
+  width: min(58vw, 740px);
+  max-height: 31svh;
   object-fit: cover;
   object-position: center;
+}
+
+.footer-contact {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  font-size: clamp(13px, 1.15vw, 17px);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.footer-contact a {
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-contact a:hover,
+.footer-contact a:focus-visible {
+  color: #c51a0c;
+  outline: none;
 }
 
 .viewer {
@@ -395,11 +420,17 @@ html[lang="uk"] .tagline {
 
   .footer {
     min-height: 34svh;
+    padding: 28px 18px 34px;
   }
 
   .footer img {
-    width: 82vw;
-    max-height: 30svh;
+    width: 68vw;
+    max-height: 25svh;
+  }
+
+  .footer-contact {
+    max-width: 460px;
+    font-size: 13px;
   }
 
   .viewer figure {

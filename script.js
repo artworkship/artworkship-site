@@ -104,6 +104,7 @@ const translations = {
       'Yet there have already been occasions when different people, independently of one another, recognized the very same biblical scenes within the same painting.'
     ],
     storyButton: 'READ THE FULL STORY OF THE ARTIST',
+    footerCopy: 'If you have something to say to the artist or the team, write to',
     documentLanguage: 'en'
   },
   es: {
@@ -148,6 +149,7 @@ const translations = {
       'Sin embargo, ya ha ocurrido que diferentes personas, de manera totalmente independiente, han reconocido las mismas escenas bíblicas en una misma pintura.'
     ],
     storyButton: 'LEER LA HISTORIA COMPLETA DEL AUTOR',
+    footerCopy: 'Si tienes algo que decirle al autor o al equipo, escribe a',
     documentLanguage: 'es'
   },
   uk: {
@@ -192,6 +194,7 @@ const translations = {
       'Але були випадки, коли різні люди паралельно бачили одні і ті ж сюжети із Біблії.'
     ],
     storyButton: 'ЧИТАТИ ПОВНУ ІСТОРІЮ АВТОРА',
+    footerCopy: 'Якщо вам є, що сказати автору або команді — пишіть',
     documentLanguage: 'uk'
   }
 };
@@ -206,6 +209,7 @@ const projectCopy = document.querySelector('[data-project-copy]');
 const authorTitle = document.querySelector('[data-author-title]');
 const authorCopy = document.querySelector('[data-author-copy]');
 const storyButton = document.querySelector('[data-story-button]');
+const footerCopy = document.querySelector('[data-footer-copy]');
 
 function replaceParagraphs(container, items) {
   container.replaceChildren(
@@ -247,6 +251,7 @@ function setLanguage(language) {
   authorTitle.textContent = selected.authorTitle;
   replaceParagraphs(authorCopy, selected.authorCopy);
   storyButton.firstChild.textContent = `${selected.storyButton} `;
+  footerCopy.textContent = `${selected.footerCopy} `;
 
   document.documentElement.lang = selected.documentLanguage;
   localStorage.setItem('artworkship-language', language);
