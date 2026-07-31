@@ -61,13 +61,41 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowRight') showArtwork(currentIndex + 1);
 });
 
-const languageButtons = [...document.querySelectorAll('[data-language]')];
 
-function selectLanguage(language) {
-  // Переклади EN та ES будуть додані наступним кроком.
-  // Поки весь зміст сторінки залишається українською.
-  document.documentElement.lang = 'uk';
-  localStorage.setItem('artworkship-language-choice', language);
+const translations = {
+  en: {
+    label: 'EN',
+    lines: ['ART AS', 'WORSHIP'],
+    documentLanguage: 'en'
+  },
+  es: {
+    label: 'ES',
+    lines: ['ARTE COMO', 'ADORACIÓN A DIOS'],
+    documentLanguage: 'es'
+  },
+  uk: {
+    label: 'UA',
+    lines: ['МИСТЕЦТВО ЯК', 'ПРОСЛАВА БОГА'],
+    documentLanguage: 'uk'
+  }
+};
+
+const languageButtons = [...document.querySelectorAll('[data-language]')];
+const tagline = document.querySelector('[data-tagline]');
+
+function setLanguage(language) {
+  const selected = translations[language] || translations.en;
+
+  tagline.replaceChildren(
+    ...selected.lines.map((line) => {
+      const span = document.createElement('span');
+      span.textContent = line;
+      return span;
+    })
+  );
+
+  document.documentElement.lang = selected.documentLanguage;
+  localStorage.setItem('artworkship-language', language);
 
   languageButtons.forEach((button) => {
     const active = button.dataset.language === language;
@@ -77,7 +105,14 @@ function selectLanguage(language) {
 }
 
 languageButtons.forEach((button) => {
-  button.addEventListener('click', () => selectLanguage(button.dataset.language));
+  button.addEventListener('click', () => setLanguage(button.dataset.language));
 });
 
-selectLanguage(localStorage.getItem('artworkship-language-choice') || 'uk');
+const savedLanguage = localStorage.getItem('artworkship-language');
+const browserLanguage = navigator.language.toLowerCase();
+const initialLanguage =
+  savedLanguage ||
+  (browserLanguage.startsWith('es') ? 'es' :
+   browserLanguage.startsWith('uk') ? 'uk' : 'en');
+
+setLanguage(initialLanguage);
