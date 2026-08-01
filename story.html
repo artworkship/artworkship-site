@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>The First Step | artworkship</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="story.css">
+</head>
+<body class="story-page">
+  <header class="story-header">
+    <a class="story-home" href="index.html" data-back-link aria-label="Back to artworkship">
+      <img src="assets/brand/rk-logo-header.png" alt="rk">
+    </a>
+    <nav class="language-switcher story-language-switcher" aria-label="Language selector">
+      <button type="button" data-story-language="en" class="language-option">EN</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-story-language="es" class="language-option">ES</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-story-language="it" class="language-option">IT</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-story-language="uk" class="language-option">UA</button>
+    </nav>
+  </header>
+
+  <main class="story-reader">
+    <section class="story-cover" data-cover>
+      <p class="story-kicker" data-story-category></p>
+      <h1 data-story-title></h1>
+      <p class="story-subtitle" data-story-subtitle></p>
+      <div class="story-classification">
+        <span data-story-section></span>
+        <span data-story-genre></span>
+      </div>
+    </section>
+
+    <div class="story-layout">
+      <aside class="story-toc" aria-label="Contents">
+        <button class="story-toc-toggle" type="button" data-toc-toggle></button>
+        <ol data-toc></ol>
+      </aside>
+
+      <article class="story-chapter" aria-live="polite">
+        <p class="story-chapter-number" data-chapter-number></p>
+        <h2 data-chapter-title></h2>
+        <div class="story-text" data-chapter-body></div>
+        <nav class="story-navigation" aria-label="Chapter navigation">
+          <button type="button" data-prev></button>
+          <span data-progress></span>
+          <button type="button" data-next></button>
+        </nav>
+      </article>
+    </div>
+  </main>
+
+  <script src="story.js"></script>
+</body>
+</html>
