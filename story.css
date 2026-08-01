@@ -1,0 +1,12 @@
+body{margin:0;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',Inter,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;padding:28px 42px}
+nav a{color:#fff;opacity:.45;margin-left:16px;text-decoration:none}
+nav a.active{opacity:1}
+main{max-width:860px;margin:auto;padding:40px}
+.cover{min-height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+h1{font-weight:300;font-size:58px;letter-spacing:.08em;margin:0}
+.cover p{opacity:.6;font-size:22px}
+button{margin-top:48px;padding:14px 28px;border:1px solid #444;background:#111;color:#fff;border-radius:999px}
+.hidden{display:none}
+.page{font-size:22px;line-height:1.9}
+.pager{display:flex;justify-content:space-between;margin:80px 0}
