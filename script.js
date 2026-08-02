@@ -152,6 +152,51 @@ const translations = {
     footerCopy: 'Si tienes algo que decirle al autor o al equipo, escribe a',
     documentLanguage: 'es'
   },
+  it: {
+    label: 'IT',
+    lines: ['ARTE COME', 'ADORAZIONE'],
+    scripture: [
+      '«MA VIENE L’ORA,',
+      'ED È QUESTA,',
+      'IN CUI I VERI ADORATORI',
+      'ADORERANNO IL PADRE',
+      'IN SPIRITO E VERITÀ,',
+      'PERCHÉ IL PADRE CERCA',
+      'TALI ADORATORI.',
+      'DIO È SPIRITO,',
+      'E QUELLI CHE LO ADORANO',
+      'DEVONO ADORARE',
+      'IN SPIRITO E VERITÀ.»'
+    ],
+    scriptureReference: 'GIOVANNI 4:23–24',
+    galleryTitle: 'GALLERIA',
+    projectTitle: 'LA PITTURA COME ADORAZIONE',
+    projectCopy: [
+      'Questo progetto è nato come risposta alla chiamata di Dio.',
+      'L’artista crea ogni dipinto senza bozzetto, senza un soggetto prestabilito e senza un risultato atteso.',
+      'Ci sono soltanto una tela bianca, l’adorazione di Dio e una preghiera allo Spirito Santo, affinché guidi ogni movimento del pennello.',
+      'Man mano che l’opera prende forma, tra le forme astratte cominciano a emergere immagini che l’artista non crea consapevolmente.',
+      'La cosa più sorprendente è che sono altre persone a notarle per prime.',
+      'In questi dipinti emergono immagini bibliche.',
+      'Così è nato artworkship: non come un modo di esprimere sé stessi, ma come un atto di adorazione a Dio.'
+    ],
+    authorTitle: 'RK',
+    authorCopy: [
+      'Il nome e il volto dell’artista rimangono nascosti.',
+      'L’artista non cerca pubblicità né attenzione personale.',
+      'Crede che al centro non debba esserci l’artista, ma Dio.',
+      'Questo progetto non è mai nato per la fama, la popolarità o il riconoscimento umano. È un atto di umiltà e obbedienza davanti al Creatore.',
+      'L’artista rimane soltanto la mano che tiene il pennello.',
+      { text: 'Per agire in questo mondo, Dio ha scelto di operare attraverso di noi.', highlight: true },
+      'L’artista sceglie consapevolmente di rimanere nell’ombra affinché tutta la gloria, l’onore e la lode appartengano soltanto a Dio.',
+      'Puoi essere certo che questi dipinti ti parleranno in modo unico.',
+      'Ti si rivelerà esattamente ciò che è destinato a essere rivelato a te.',
+      'Eppure è già accaduto che persone diverse, indipendentemente l’una dall’altra, riconoscessero le stesse scene bibliche nello stesso dipinto.'
+    ],
+    storyButton: 'LEGGI LA STORIA COMPLETA DELL’ARTISTA',
+    footerCopy: 'Se hai qualcosa da dire all’artista o al team, scrivi a',
+    documentLanguage: 'it'
+  },
   uk: {
     label: 'UA',
     lines: ['МИСТЕЦТВО ЯК', 'ПОКЛОНІННЯ БОГУ'],
@@ -276,6 +321,7 @@ const browserLanguage = navigator.language.toLowerCase();
 const initialLanguage =
   savedLanguage ||
   (browserLanguage.startsWith('es') ? 'es' :
+   browserLanguage.startsWith('it') ? 'it' :
    browserLanguage.startsWith('uk') ? 'uk' : 'en');
 
 setLanguage(initialLanguage);

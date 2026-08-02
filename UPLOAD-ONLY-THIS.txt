@@ -1,9 +1,5 @@
-Upload these four website files to the ROOT of the GitHub repository:
+Upload these two files to the ROOT of the GitHub repository and replace the existing files:
+1. index.html
+2. script.js
 
-1. index.html  (replace the existing file)
-2. story.html  (new file)
-3. story.css   (new file)
-4. story.js    (new file)
-
-Do not upload or delete any other files.
-The existing styles.css, script.js, assets folder, images, CNAME and all other site files remain unchanged.
+Do not delete or replace any other files.
