@@ -1,5 +1,14 @@
-Upload these two files to the ROOT of the GitHub repository and replace the existing files:
-1. index.html
-2. script.js
+Upload these four files to the ROOT of the GitHub repository and replace files when prompted:
 
-Do not delete or replace any other files.
+1. index.html
+2. story.html
+3. robots.txt
+4. sitemap.xml
+
+Do not delete or replace styles.css, script.js, story.js, story.css, assets, CNAME, or any other files.
+
+After GitHub Pages updates, open:
+https://artworkship.com/sitemap.xml
+https://artworkship.com/robots.txt
+
+Then submit sitemap.xml in Google Search Console.
