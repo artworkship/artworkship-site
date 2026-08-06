@@ -1,0 +1,1 @@
+Replace ONLY index.html and story.html in GitHub. GTM and Clarity added; existing GA4 preserved.
